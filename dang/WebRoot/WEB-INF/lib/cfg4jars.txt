@@ -1,0 +1,6 @@
+项目所需jar包为
+hibernate 17个
+struts 7个
+jstl.jar
+standard.jar
+一共26个

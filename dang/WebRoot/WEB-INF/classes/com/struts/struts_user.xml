@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="dang_user" extends="json-default"
+		namespace="/user">
+
+		<action name="login">
+			<result name="success">/WEB-INF/user/login_form.jsp</result>
+		</action>
+
+		<action name="loginer"
+			class="com.action.CheckLoginerAction">
+			<result name="success">/WEB-INF/main/main.jsp</result>
+			<result name="fail" type="redirect">/user/login.action</result>
+		</action>
+
+		<action name="regist">
+			<result name="success">
+				/WEB-INF/user/register_form.jsp
+			</result>
+			
+		</action>
+
+		<action name="register"
+			class="com.action.RegisterAction">
+			<result name="success">
+				/WEB-INF/user/verify_form.jsp
+			</result>
+			<result name="500">
+				/WEB-INF/user/error.jsp
+			</result>
+		</action>
+
+		<action name="checkCodeAction"
+			class="com.action.CheckCodeAction">
+			<result name="success" type="stream">
+				<param name="inputName">is</param>
+				<param name="contentType">image/jpeg</param>
+			</result>
+		</action>
+
+		<action name="check"
+			class="com.action.CheckCheckcodeAction">
+			<result name="success" type="json">
+				<param name="root">flag</param>
+			</result>
+		</action>
+
+		<action name="checkEmailCode"
+			class="com.action.CheckEmailCodeAction">
+			<result name="success" type="json">
+				<param name="root">flag</param>
+			</result>
+		</action>
+
+		<action name="ok">
+			<result name="success">
+				/WEB-INF/user/register_ok.jsp
+			</result>
+		</action>
+
+	</package>
+</struts>

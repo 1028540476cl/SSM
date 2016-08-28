@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="dang_main" extends="dang-default"
+		namespace="/main">
+
+		<action name="main">
+			<result name="success">/WEB-INF/main/main.jsp</result>
+		</action>
+		
+		<action name="category" class="com.action.main.CategoryAction">
+			<result name="success">/WEB-INF/main/category.jsp</result>
+		</action>
+	
+		<action name="recommend" class="com.action.main.RecommendAction">
+			<result name="success">/WEB-INF/main/recommend.jsp</result>
+		</action>
+		
+		<action name="hot" class="com.action.main.HotAction">
+			<result name="success">/WEB-INF/main/hot.jsp</result>
+		</action>
+		
+		<action name="new" class="com.action.main.NewAction">
+			<result name="success">/WEB-INF/main/new.jsp</result>
+		</action>
+		
+		<action name="newProduct" class="com.action.main.NewProductAction">
+			<result name="success">/WEB-INF/main/new.jsp</result>
+		</action>
+		
+		<action name="booklist" class="com.action.main.BookListAction">
+			<result name="success">/WEB-INF/main/book_list.jsp</result>
+		</action>
+		
+		<action name="addAction" class="com.action.cart.AddCartAction">
+			<result name="success" type="chain">../main/booklist.action</result>
+		</action>
+
+	</package>
+</struts>

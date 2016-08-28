@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+    <struts>
+      <package name="dang_order" extends="dang-default" namespace="/order">
+          
+          <action name="orderAction" class="com.action.order.OrderAction">
+    		<result name="success">/WEB-INF/order/order_info.jsp</result>
+    	  </action>
+    	  
+    	  <action name="addressAction" class="com.action.order.AddressAction">
+    		<result name="success">/WEB-INF/order/order_ok.jsp</result>
+    	  </action>
+    	  
+    	  <action name="toAddressAction">
+    		<result name="success">/WEB-INF/order/address_form.jsp</result>
+    	  </action>
+      </package>
+    </struts>

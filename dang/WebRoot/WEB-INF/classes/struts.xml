@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<include file="com/struts/struts_user.xml"/>
+	<include file="com/struts/struts_main.xml"/>
+	<include file="com/struts/struts_cart.xml"/>
+	<include file="com/struts/struts_order.xml"/>
+	<package name="dang-default" extends="json-default" namespace="/">
+		<!-- 定义一些共通Action,拦截器,Result -->
+		<interceptors>
+			<interceptor name="login" class="com.interceptor.LoginInterceptor"></interceptor>
+			<interceptor-stack name="dangStack">
+				<interceptor-ref name="login">
+					<param name="includeMethods">add,update</param>
+					<param name="excludeMethods">view,execute</param>
+				</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 默认响应的Action -->
+		<default-action-ref name="index"></default-action-ref>
+		
+		<global-results>
+			<result name="error">/error.jsp</result>
+			<result name="login">/WEB-INF/user/login_form.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		
+		 <action name="index">
+		 	<result name="success" type="redirectAction">
+		 		<param name="actionName">login</param>
+		 		<param name="namespace">/user</param>
+		 	</result>
+		 </action>
+	</package>
+	 
+
+</struts>

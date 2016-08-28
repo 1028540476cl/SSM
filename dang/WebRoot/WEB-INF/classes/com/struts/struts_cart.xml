@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+    <struts>
+       <package name="json-cart-package" namespace="/addCart" extends="json-default">
+		<action name="addAction"  class="com.action.cart.AddCartAction">
+    		<result name="success"  type="json"></result>
+    	</action>
+	   </package>
+	   
+      <package name="dang_cart" extends="dang-default" namespace="/cart">
+         <action name="cart" class="com.action.cart.CartAction">
+			<result name="success">/WEB-INF/cart/cart_list.jsp</result>
+		</action>
+		
+		<action name="updateAction"  class="com.action.cart.UpdateAction">
+    		<result name="success" type="redirect">cart.action</result>
+    	</action>
+		
+		<action name="delAction"  class="com.action.cart.DelAction">
+    		<result name="success" type="redirect">cart.action</result>
+    	</action>
+    	
+    	<action name="recoveryAction"  class="com.action.cart.RecoveryAction">
+    		<result name="success" type="redirect">cart.action</result>
+    	</action>
+      </package>
+    </struts>
